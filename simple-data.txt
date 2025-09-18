@@ -1,0 +1,74 @@
+Identitas Diri
+jenis Pensiun : Pensiun BUP (Batas Usia Pensiun)
+nama    : Anjang Sono
+NIP     : 196711090070011027
+nkk     : 3273015408670021
+nik     : 3273011408670042
+tanggal lahir   : 9/11/1967
+Alamat Sekarang : Jalan K.S.Tubun Nomor 105 RT.2 Kelurahan Selat Hilir Kecamatan Selat Kabupaten Kapuas
+Unit Organisasi   : Dinas Transmigrasi dan Tenaga Kerja Kabupaten Kapuas
+jabatan           : Pengurus Barang Pengguna
+pangkat           : Penata Muda
+golongan ruang    : III/a
+Telpon            : 085249854093
+Alamat Pensiun    : Jalan K.S.Tubun Nomor 105 RT.2 Kelurahan Selat Hilir Kecamatan Selat Kabupaten Kapuas
+
+Identitas Pasangan
+Memmpunyai Pasangan : Ya
+Status Hidup : Hidup
+Nama Pasangan : Yatie
+nkk     : 3273015408670029
+Pekerjaan : Ibu Rumah Tangga
+tanggal_lahir : 05/06/1968
+No Akta Nikah : NKH-098/KUA/KPS
+Tanggal Nikah : 03/21/1994
+Tanggal Bercerai :
+
+nik, nama, jenis_kelamin, tanggal_lahir, menikah, alamat, pekerjaan, telpon
+Detail Anak (1)
+NIK : 3273011408673452
+Nama Lengkap : Era Anggraini
+Jenis Kelamin : Perempuan
+Tanggal Lahir : 12/14/1994
+Menikah : Ya
+Pekerjaan : Honorer
+Telpon : 085249854345
+Alamat : Jalan K.S.Tubun Nomor 105 RT.2 Kelurahan Selat Hilir
+
+Detail Anak (2)
+NIK : 3273011408673453
+Nama Lengkap : Elin Andriani
+Jenis Kelamin : Perempuan
+Tanggal Lahir : 07/11/2002
+Menikah : Belum Menikah
+Alamat : Jalan K.S.Tubun Nomor 105 RT.2 Kelurahan Selat Hilir
+Pekerjaan : Honorer
+Telpon : 08524985456
+
+
+
+Status Usulan
+Berkas Anda dalam tahap verifikasi
+Berkas Anda telah diusulkan
+Berkas Anda telah selesai
+Berkas telah diterima pemohon
+
+
+
+//update penginputan data identitas diri dan Pasangan
+tanggal_meninggal, tanggal_pasangan_meninggal
+
+Menambahkan fitur buku panduan
+-Meminta dokumen persyratan
+-membuat buku petunjuk
+-menyesuaikan penarikan data excel
+
+
+hapus kolom 'golongan_ruang', 
+ganti nama kolom pangkat menjadi 'pangkat_golongan'
+tambahkan kolom 'tanggal_meninggal' tipe data date
+tambahkan kolom 'tanggal_meninggal_pasangan' tipe data date dan bisa nullabel
+tambahkan kolom 'pertek' tipe data varchar nullabel
+
+
+Berkas anda telah selesai, silakan lihat pertek, kemudian konfirmasi admin melalui no 081234345656
