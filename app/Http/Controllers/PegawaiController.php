@@ -51,8 +51,7 @@ class PegawaiController extends Controller
     {
         // ambil data pegawai, contoh: hanya yang data_done = true
         $pegawai = Pegawai::where('data_done', true)
-            ->orderBy('tanggal_usul', 'desc')
-            ->get(['nip', 'nama', 'tanggal_usul']);
+            ->orderBy('tanggal_usul', 'desc')->get();
 
         // buat file excel sementara
         $filePath = storage_path('app/data-pegawai-usul-pensiun.xlsx');
@@ -62,9 +61,15 @@ class PegawaiController extends Controller
         // tambahkan data
         foreach ($pegawai as $p) {
             $writer->addRow([
-                'NIP'          => $p->nip,
                 'Nama'         => $p->nama,
+                'NIP'          => $p->nip,
+                'Pangkat Golongan'          => $p->pangkat_golongan,
+                'Jabatan'          => $p->jabatan,
+                'Unit Organisasi'          => $p->unit_organisasi,
                 'Tanggal Usul' => optional($p->tanggal_usul)->format('Y-m-d'),
+                'Tanggal TMT Pensiun' => optional($p->tanggal_tmt_pensiun)->format('Y-m-d'),
+                'Telpon'          => $p->telpon,
+                'Jenis Pensiun'          => $p->jenisPensiun->nama,
             ]);
         }
         $writer->close();
