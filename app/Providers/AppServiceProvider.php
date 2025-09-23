@@ -29,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
             ->orderBy('tanggal_usul', 'desc')
             ->take(5)
             ->get();
+        $jumlah_usul_masuk = Pegawai::where('data_done', true)
+            ->where('tanggal_usul', '>=', Carbon::now()->subMonth())
+            ->count();
+
+        View::share('glob_jumlah_usul_masuk', $jumlah_usul_masuk);
         View::share('glob_5_pegawai', $list_pegawai);
     }
 }

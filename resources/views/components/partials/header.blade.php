@@ -26,7 +26,7 @@
                     <button type="button" class="btn header-item noti-icon waves-effect"
                         id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="ri-notification-3-line"></i>
-                        <span class="noti-dot"></span>
+                        <span class="badge rounded-pill bg-danger float-end">{{ $glob_jumlah_usul_masuk }}</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                         aria-labelledby="page-header-notifications-dropdown">
@@ -42,7 +42,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-xs me-3">
                                             <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                <i class=" ri-inbox-archive-line"></i>
+                                                <i class="ri-inbox-archive-line"></i>
                                             </span>
                                         </div>
                                         <div class="flex-1">

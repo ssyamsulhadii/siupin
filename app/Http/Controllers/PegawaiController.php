@@ -15,7 +15,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $list_pegawai =
-            Pegawai::when(request('search'), function ($query, $search) {
+            Pegawai::with('jenisPensiun')->when(request('search'), function ($query, $search) {
                 $query->where(function ($sub) use ($search) {
                     $sub->where('nama', 'like', "%{$search}%")
                         ->orWhere('nip', 'like', "%{$search}%");
@@ -30,6 +30,7 @@ class PegawaiController extends Controller
      */
     public function show(Pegawai $pegawai)
     {
+        $pegawai->load(['jabatanNominatif', 'jenisPensiun']);
         return view('pages.pegawai.detail', compact('pegawai'));
     }
 

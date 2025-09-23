@@ -15,6 +15,7 @@ class PenerimaBerkas extends Model
         'keterangan',
         'pegawai_id',
     ];
+    protected $with = ['pegawai'];
     protected $casts = ['tanggal_pengambilan' => 'date'];
 
     public function pegawai(): BelongsTo
