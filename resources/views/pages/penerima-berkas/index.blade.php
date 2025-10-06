@@ -45,7 +45,11 @@
                                                     {{ $list_penerima_berkas->firstItem() + $loop->index }}
                                                 </td>
                                                 <td>{{ $penerima_berkas->nama }}</td>
-                                                <td>{{ $penerima_berkas->telpon }}</td>
+                                                <td>
+                                                    <a href="{{ $penerima_berkas->whatsapp_link }}" target="_blank">
+                                                        {{ $penerima_berkas->telpon }}
+                                                    </a>
+                                                </td>
                                                 <td>{{ $penerima_berkas->tanggal_pengambilan->isoFormat('DD MMMM YYYY') }}
                                                 </td>
                                                 <td>{{ $penerima_berkas->keterangan }}</td>

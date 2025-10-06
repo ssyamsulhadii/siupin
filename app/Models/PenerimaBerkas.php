@@ -22,4 +22,11 @@ class PenerimaBerkas extends Model
     {
         return $this->belongsTo(Pegawai::class);
     }
+
+    public function getWhatsappLinkAttribute(): ?string
+    {
+        $no = preg_replace('/^0/', '62', $this->telpon);
+
+        return "https://wa.me/{$no}";
+    }
 }

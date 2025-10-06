@@ -64,6 +64,58 @@ class Pegawai extends Model
         return parent::getAttribute($key);
     }
 
+    public function getKodeProgressBadgeAttribute(): string
+    {
+        $map = [
+            1 => 'badge bg-success text-white',   // Hijau
+            2 => 'badge bg-primary text-white',   // Biru
+            3 => 'badge bg-warning text-dark',    // Orange/kuning gelap (default bootstrap warning)
+            4 => 'badge text-dark',              // Kuning -> handle manual
+            5 => 'badge bg-secondary text-white', // Abu-abu
+            6 => 'badge bg-danger text-white',    // Merah
+        ];
+
+        $kp = (int) $this->kode_progress;
+
+        if ($kp === 4) {
+            // custom kuning dengan teks putih
+            return sprintf(
+                '<span class="%s fa-1x" style="background: yellow;">%s</span>',
+                e($map[$kp]),
+                e($this->nama)
+            );
+        }
+        $class = $map[$kp] ?? 'badge bg-secondary text-white';
+        return sprintf(
+            '<span class="%s fa-1x">%s</span>',
+            e($class),
+            e($this->nama)
+        );
+    }
+
+    public function getProgressUsulAttribute(): string
+    {
+        $progress = [
+            1 => 'Sudah Diterima',
+            2 => 'Sudah TTE',
+            3 => 'Input SIASN',
+            4 => 'Dokumen Tarik',
+            5 => 'Dokumen Masuk',
+            6 => 'Dokumen Batal',
+        ];
+
+        return $this->kode_progress
+            ? ($progress[$this->kode_progress] ?? null)
+            : null;
+    }
+
+    public function getWhatsappLinkAttribute(): ?string
+    {
+        // ubah 0xxx jadi 62xxx
+        $no = preg_replace('/^0/', '62', $this->telpon);
+        return "https://wa.me/{$no}";
+    }
+
 
     public function listDetailAnak(): HasMany
     {
@@ -71,7 +123,7 @@ class Pegawai extends Model
     }
     public function penerimaBerkas(): HasOne
     {
-        return $this->hasOne(penerimaBerkas::class);
+        return $this->hasOne(PenerimaBerkas::class);
     }
 
     public function jenisPensiun(): BelongsTo
@@ -80,6 +132,6 @@ class Pegawai extends Model
     }
     public function jabatanNominatif(): BelongsTo
     {
-        return $this->belongsTo(jabatanNominatif::class);
+        return $this->belongsTo(JabatanNominatif::class);
     }
 }

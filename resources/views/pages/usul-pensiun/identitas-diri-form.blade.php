@@ -8,8 +8,8 @@
             item="{{ $pegawai->nip ?? '' }}" type="number" phr="******************"></x-forms.input>
         <x-forms.input name="nkk" label="Nomor Kartu Keluarga (NKK)" item="{{ $pegawai->nkk ?? '' }}" type="number"
             phr="****************"></x-forms.input>
-        <x-forms.input name="nik" label="Nomor Kartu Penduduk (NIK)" item="{{ $pegawai->nik ?? '' }}" type="number"
-            phr="****************"></x-forms.input>
+        <x-forms.input name="nik" label="Nomor Induk Kependudukan (NIK)" item="{{ $pegawai->nik ?? '' }}"
+            type="number" phr="****************"></x-forms.input>
         <x-forms.input name="tanggal_lahir" label="Tanggal Lahir"
             item="{{ $pegawai?->tanggal_lahir->format('Y-m-d') ?? '' }}" type="date"></x-forms.input>
         <x-forms.selection-group name='jenis_kelamin' label='Jenis Kelamin' item="{{ $pegawai->jenis_kelamin ?? '' }}"

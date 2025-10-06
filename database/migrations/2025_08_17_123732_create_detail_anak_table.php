@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('nik', 16);
             $table->string('nama', 128);
             $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->date('tanggal_lahir', 128);
+            $table->date('tanggal_lahir');
             $table->boolean('menikah');
             $table->string('alamat', 128);
             $table->string('pekerjaan', 128);

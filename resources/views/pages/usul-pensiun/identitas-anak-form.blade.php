@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-6">
-        <x-forms.input name="nik" label="NIK" item="" type="number"></x-forms.input>
+        <x-forms.input name="nik" label="Nomor Induk Kependudukan (NIK)" item="" type="number"></x-forms.input>
         <x-forms.input name="nama" label="Nama" item=""></x-forms.input>
         <x-forms.input name="tanggal_lahir" label="Tanggal Lahir" item="" type="date"></x-forms.input>
         <x-forms.selection-group name='jenis_kelamin' label='Jenis Kelamin' item="" :items="$pil_jk" />

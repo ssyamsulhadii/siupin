@@ -20,7 +20,7 @@ class PegawaiController extends Controller
                     $sub->where('nama', 'like', "%{$search}%")
                         ->orWhere('nip', 'like', "%{$search}%");
                 });
-            })->orderBy('tanggal_usul', 'desc')->latest()->paginate(10)->withQueryString();
+            })->orderBy('tanggal_usul', 'desc')->paginate(10)->withQueryString();
         return view('pages.pegawai.index', compact('list_pegawai'));
     }
 
@@ -71,6 +71,7 @@ class PegawaiController extends Controller
                 'Tanggal TMT Pensiun' => optional($p->tanggal_tmt_pensiun)->format('Y-m-d'),
                 'Telpon'          => $p->telpon,
                 'Jenis Pensiun'          => $p->jenisPensiun->nama,
+                'Progress Usul' => $p->progress_usul,
             ]);
         }
         $writer->close();
@@ -121,5 +122,12 @@ class PegawaiController extends Controller
         Storage::delete('public/pas-foto/' . $pegawai->pas_foto);
         $pegawai->delete();
         return back()->with('swal-success', 'Data Status Usul Pensiun berhasil dihapus.');
+    }
+
+    public function kodeProgress(Request $request, Pegawai $pegawai)
+    {
+        $validated = $request->validate(['kode_progress' => 'required|integer|between:1,6']);
+        $pegawai->update(['kode_progress' => $validated['kode_progress']]);
+        return redirect()->back()->with('success', 'Progress usul berhasil diperbarui.');
     }
 }

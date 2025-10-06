@@ -17,7 +17,7 @@ Identitas Pasangan
 Memmpunyai Pasangan : Ya
 Status Hidup : Hidup
 Nama Pasangan : Yatie
-nkk     : 3273015408670029
+nik     : 3273015408670029
 Pekerjaan : Ibu Rumah Tangga
 tanggal_lahir : 05/06/1968
 No Akta Nikah : NKH-098/KUA/KPS
@@ -72,3 +72,35 @@ tambahkan kolom 'pertek' tipe data varchar nullabel
 
 
 Berkas anda telah selesai, silakan lihat pertek, kemudian konfirmasi admin melalui no 081234345656
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SET DB
+n    : bkpsdm_db_siupin
+u    : bkpsdm_us_siupin
+p    : @dbSiupin132

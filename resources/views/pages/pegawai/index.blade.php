@@ -46,8 +46,8 @@
                                     <th style="width: 150px" class="text-center">Nama & NIP</th>
                                     <th>Pangkat - Gol. Ruang</th>
                                     <th>Jenis Pensiun</th>
-                                    <th>Telpon</th>
-                                    <th>Status</th>
+                                    <th class="text-center" style="width: 120px">Telpon</th>
+                                    <th class="text-center">Status</th>
                                     <th style="width: 130px" class="text-center">Menu</th>
                                 </tr>
                             </thead>
@@ -55,16 +55,18 @@
                                 @foreach ($list_pegawai as $pegawai)
                                     <tr>
                                         <th scope="row">
-                                            {{ $list_pegawai->firstItem() + $loop->index }}
+                                            {{ $list_pegawai->firstItem() + $loop->index }}.
                                         </th>
-                                        <td>{{ $pegawai->nama }} <br> {{ $pegawai->nip }} <br>
-                                            <div class="alert alert-info p-2" role="alert">{{ $pegawai->status_usul }}
+                                        <td>
+                                            {!! $pegawai->kode_progress_badge !!} <br>
+                                            {{ $pegawai->nip }} <br>
+                                            <div class="alert alert-info p-2" role="alert">
+                                                {{ $pegawai->status_usul }}
                                             </div>
-
                                             <div class="dropdown">
                                                 <a href="#" class="btn btn-sm btn-warning dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Pilih Status<i class="mdi mdi-chevron-down"></i>
+                                                    Pilih Keterangan<i class="mdi mdi-chevron-down"></i>
                                                 </a>
 
                                                 <div class="dropdown-menu">
@@ -82,19 +84,16 @@
                                                         ]) }}">
                                                         Berkas Anda telah diusulkan
                                                     </a>
-                                                    {{-- <a class="dropdown-item"
-                                                        href="{{ route('pegawai.status-usul.update', [
-                                                            'pegawai' => $pegawai->nip,
-                                                            'keterangan' => 'Berkas Anda telah selesai',
-                                                        ]) }}">
-                                                        Berkas Anda telah selesai
-                                                    </a> --}}
                                                 </div>
                                             </div>
                                         </td>
                                         <td>{{ $pegawai->pangkat_golongan }} </td>
                                         <td>{{ $pegawai->jenisPensiun->nama }}</td>
-                                        <td>{{ $pegawai->telpon }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ $pegawai->whatsapp_link }}" target="_blank">
+                                                {{ $pegawai->telpon }}
+                                            </a>
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <span class="me-2">Identitas Pasangan :</span>
@@ -129,6 +128,30 @@
                                                         </a>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <form id="progressForm"
+                                                    action="{{ route('pegawai.kode_progress', ['pegawai' => $pegawai->nip]) }}"
+                                                    method="POST"> @csrf
+                                                    <label for="progress_usul" class="form-label">-- Pilih Progress
+                                                        Usul --</label>
+                                                    <select class="form-select" id="progress_usul" name="kode_progress"
+                                                        onchange="document.getElementById('progressForm').submit();">
+                                                        <option value="1" @selected($pegawai->kode_progress == 1)>Sudah Diterima
+                                                        </option>
+                                                        <option value="2" @selected($pegawai->kode_progress == 2)>Sudah TTE
+                                                        </option>
+                                                        <option value="3" @selected($pegawai->kode_progress == 3)>Input SIASN
+                                                        </option>
+                                                        <option value="4" @selected($pegawai->kode_progress == 4)>Dokumen Tarik
+                                                        </option>
+                                                        <option value="5" @selected($pegawai->kode_progress == 5)>Dokumen Masuk
+                                                        </option>
+                                                        <option value="6" @selected($pegawai->kode_progress == 6)>Dokumen Batal
+                                                        </option>
+                                                    </select>
+                                                </form>
+
                                             </div>
                                         </td>
                                         <td>

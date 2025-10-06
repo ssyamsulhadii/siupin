@@ -76,6 +76,7 @@ return new class extends Migration
             $table->date('tanggal_tmt_pensiun')->nullable(); //otomatis
             $table->string('pertek')->nullable(); //opsional
 
+            $table->tinyInteger('kode_progress')->default(5); //
             $table->timestamps();
         });
     }

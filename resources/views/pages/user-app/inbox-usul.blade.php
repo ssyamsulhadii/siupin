@@ -51,7 +51,7 @@
                             <table class="table table-hover">
                                 <tr>
                                     <td style="width: 170px">Nama</td>
-                                    <td>{{ $pegawai->nama }}</td>
+                                    <td>{!! $pegawai->kode_progress_badge !!}</td>
                                 </tr>
                                 <tr>
                                     <td>NIP</td>
