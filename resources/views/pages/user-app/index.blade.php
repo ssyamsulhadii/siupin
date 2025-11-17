@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <x-others.page-title title="Beranda" subtitle="Tampil Data" link="{{ route('beranda.index') }}"></x-others.page-title>
+    @auth
     <div class="row">
         <div class="col-lg-4 col-md-6">
             <div class="card">
@@ -40,7 +41,7 @@
             </div>
         @endforeach
     </div>
-
+    @endauth
 
 
     <div class="row">
@@ -67,7 +68,7 @@
                 <div class="card-body">
                     <blockquote class="card-blockquote mb-0">
                         <p style="text-align: justify; font-size: 17px; font-weight: bold; font-style: italic">
-                            Tetaplah menjadi baik, jika berentung kita akan menemukan orang baik, jika tidak kita akan
+                            Tetaplah menjadi baik, jika beruntung kita akan menemukan orang baik, jika tidak kita akan
                             ditemukan oleh orang baik.</p>
                         <footer class="blockquote-footer font-size-12 m-0">Anonim</footer>
                     </blockquote>
@@ -84,9 +85,9 @@
                         <li>Peraturan Pemerintah No. 11 Tahun 2017 tentang Manajemen PNS</li>
                         <li>Peraturan Pemerintah No. 35 Tahun 2019</li>
                         <li>Peraturan BKN No. 2 Tahun 2018 terkait tata cara teknis</li>
-                        <li>Surat Edaran Bupati Kabupaten Kapuas No 800/522/P3I/BKPSDM/2024 tentang Penyampaian Usulan
-                            Pensiun PNS Dilingkungan
-                            Pemerintah Kabupaten Kapuas</li>
+                        <li>Surat Edaran Bupati Kabupaten Kapuas Nomor <strong>800/122/P3I/BKPSDM/2025</strong> tentang
+                            Penyampaian Usulan
+                            Pensiun PNS Dilingkungan Pemerintah Kabupaten Kapuas</li>
                     </ul>
                 </div>
                 <p class="card-text" style="text-align: justify">
@@ -97,57 +98,65 @@
                     dengan hak
                     serta kewajiban pegawai.
                 </p>
-                <p>Adapun persyaratan yang diperlukan dalam usul pensiun antara lain:</p>
+                <p>Adapun persyaratan yang diperlukan dalam usul pensiun antara lain :</p>
                 <ol>
-                    <li><strong>Surat Pengantar Pimpinan</strong>, sebagai dasar usulan dari instansi tempat pegawai
-                        bertugas.</li>
-                    <li><strong>Surat Pernyataan Pemohon</strong>, berisi permohonan resmi untuk pensiun.</li>
-                    <li><strong>Surat Pernyataan Disiplin</strong>, menyatakan tidak pernah dijatuhi hukuman disiplin
-                        tingkat sedang maupun berat.</li>
-                    <li><strong>Surat Pernyataan Pidana</strong>, menyatakan tidak pernah dipidana atau sedang menjalani
-                        proses pidana.</li>
-                    <li><strong>SK CPNS</strong> sebagai dasar pengangkatan pertama.</li>
-                    <li><strong>SK PNS</strong> sebagai bukti pengangkatan sebagai pegawai tetap.</li>
-                    <li><strong>SK Pangkat Terakhir</strong> sesuai kedudukan pegawai saat mengajukan pensiun.</li>
-                    <li><strong>Surat PMK (Peninjauan Masa Kerja)</strong> apabila ada penyesuaian masa kerja.</li>
-                    <li><strong>Surat Kematian Pasangan</strong>, bagi pegawai yang pasangannya telah meninggal dunia.</li>
-                    <li><strong>Surat Keterangan Janda/Duda</strong>, bagi pegawai yang berstatus janda atau duda.</li>
-                    <li><strong>Akta Nikah</strong>, sebagai bukti pernikahan yang sah menurut hukum.</li>
-                    <li><strong>SKP (Sasaran Kinerja Pegawai)</strong> tahun terakhir.</li>
-                    <li><strong>Foto KTP</strong> (Kartu Tanda Penduduk).</li>
-                    <li><strong>Foto KK</strong> (Kartu Keluarga).</li>
-                    <li><strong>Pas Foto Terbaru</strong> sesuai ketentuan yang berlaku.</li>
+                    <li> <strong>Surat Pengantar</strong> dari Kepala Dinas / Instansi / Unit Kerja masing-masing.</li>
+                    <li> <strong>Surat Permohonan Pensiun</strong> (format dapat diunduh dibagian bawah halaman).</li>
+                    <li> <strong>Surat Pernyataan</strong> tidak pernah dijatuhi hukuman <strong>disiplin</strong> tingkat
+                        sedang/berat (format terlampir).
+                    </li>
+                    <li> <strong>Surat Pernyataan</strong> sedang/menjalani proses <strong>pidana atau dipidana </strong>
+                        penjara berdasarkan putusan
+                        pengadilan yang telah berkekuatan hukum tetap (format terlampir).</li>
+                    <li> Salinan / fotokopi sah <strong>Surat Keputusan CPNS</strong> dilegalisir.</li>
+                    <li> Salinan / fotokopi sah <strong>Surat Keputusan PNS</strong> dilegalisir.</li>
+                    <li> Salinan / fotokopi sah <strong>Surat Keputusan Kenaikan Pangkat terakhir</strong> dilegalisir.</li>
+                    <li> Salinan / fotokopi sah <strong>Surat Peninjauan Masa Kerja (PMK)</strong> dilegalisir.</li>
+                    <li> <strong>Surat Keterangan Kematian suami / istri</strong> dari pejabat berwenang.</li>
+                    <li> <strong>Surat Keterangan Kejandaan / Kedudaan</strong> dari Kelurahan / Kepala Desa (usul pensiun
+                        janda/duda).</li>
+                    <li> Salinan / fotokopi sah <strong>Surat Nikah/Akta Perkawinan / Akta Cerai</strong> dilegalisir oleh
+                        Pejabat yang
+                        berwenang.</li>
+                    <li> Salinan / fotokopi sah <strong>Akta Kelahiran Anak</strong> dilegalisir oleh yang berwenang.</li>
+                    <li> Sasaran Kinerja Pegawai <strong>(SKP) 1 (satu) Tahun Terakhir</strong>.</li>
+                    <li> Fotokopi <strong>Kartu Keluarga (KK)</strong>.</li>
+                    <li> Fotokopi <strong>Kartu Tanda Penduduk (KTP)</strong> (Jika mempunyai pasangan lampirkan KTP
+                        Pasangan).</li>
+                    <li> <strong>Pasfoto formal</strong> berwarna dengan latar bebas.</li>
                 </ol>
                 <div class="card bg-warning">
                     <div class="card-body pb-0">
-                        <p class="text-dark"><b>Perhatian</b>: Berkas usul yang tidak dilengkapi setelah diinput
-                            dalam seminggu kerja akan dihapus oleh admin.</p>
+                        <strong>Catatan : </strong>
+                        <p class="text-dark">Untuk persyaratan <strong>no 9 s/d 12</strong> adalah opsional, tapi wajib
+                            diunggah jika ybs mempunyai dokumen tersebut.</p>
+
+                        <p class="text-dark">Berkas usul pensiun yang tidak dilengkapi
+                            setelah diinput dalam seminggu kerja akan dihapus oleh admin.</p>
 
                         <p class="text-dark" style="text-align: justify">
                             Seluruh dokumen harus diupload secara lengkap, jelas, dan sah (dilegalisir apabila diperlukan)
                             untuk
                             memperlancar proses verifikasi oleh pejabat berwenang sehingga usul pensiun dapat diproses dan
-                            ditetapkan sesuai ketentuan, selain dari pas foto dokumen persyaratan berbentuk pdf dengan
-                            ukuran file kurang dari 700 kb. </p>
+                            ditetapkan sesuai ketentuan, selain dari pas foto dokumen persyaratan <strong> berbentuk
+                                pdf dengan ukuran maksimal 700 kb.</strong>
+
+                        </p>
                     </div>
                 </div>
                 <div>
-                    Download surat pernyataan pemohon usul pensiun
+                    Unduh foprmat surat permohonan usul pensiun
                     <ul>
-                        <li><a target="blank"
-                                href="{{ asset('assets/dokumen/surat-pernyataan-pemohon-bup.docx') }}">surat-pernyataan-pemohon-bup.docx</a>
+                                                <li><a target="blank" href="{{ asset('assets/dokumen/surat-permohonan-usul-penisun.docx') }}">Surat
+                                Permohonan Usul Penisun.docx</a>
                         </li>
                         <li><a target="blank"
-                                href="{{ asset('assets/dokumen/surat-pernyataan-pemohon-aps.docx') }}">surat-pernyataan-pemohon-aps.docx</a>
+                                href="{{ asset('assets/dokumen/surat-pernyataan-tidak-sedang-menjalani-proses-pidana.docx') }}">Surat
+                                Pernyataan Tidak Sedang Menjalani Proses Pidana.docx</a>
                         </li>
                         <li><a target="blank"
-                                href="{{ asset('assets/dokumen/surat-pernyataan-pemohon-dini.docx') }}">surat-pernyataan-pemohon-dini.docx</a>
-                        </li>
-                        <li><a target="blank"
-                                href="{{ asset('assets/dokumen/surat-pernyataan-pemohon-janda-duda.docx') }}">surat-pernyataan-pemohon-janda-duda.docx</a>
-                        </li>
-                        <li><a target="blank"
-                                href="{{ asset('assets/dokumen/surat-pernyataan-pemohon-yatim-piatu.docx') }}">surat-pernyataan-pemohon-yatim-piatu.docx</a>
+                                href="{{ asset('assets/dokumen/surat-pernyataan-tidak-pernah-dijatuhi-hukuman-disiplin.docx') }}">Surat
+                                Pernyataan Tidak Pernah Dijatuhi Hukuman Disiplin.docx</a>
                         </li>
                     </ul>
                 </div>

@@ -23,9 +23,9 @@ class formIdentitasPasanganRequest extends FormRequest
     {
         return [
             'mempunyai_pasangan' => 'required|in:ya,tidak,bercerai',
-            'status_pasangan' => 'required_unless:mempunyai_pasangan,tidak',
+            'status_pasangan' => 'required_unless:mempunyai_pasangan,tidak|in:hidup,meninggal,tidak punya',
             'nama_pasangan' => 'required_unless:mempunyai_pasangan,tidak',
-            'nik_pasangan' => 'required_unless:mempunyai_pasangan,tidak|size:16',
+            'nik_pasangan' => 'required_if:status_pasangan,hidup|size:16',
             'pekerjaan_pasangan' => 'required_unless:mempunyai_pasangan,tidak',
             'tanggal_lahir_pasangan' => 'required_unless:mempunyai_pasangan,tidak',
             'tanggal_meninggal_pasangan' => 'sometimes',

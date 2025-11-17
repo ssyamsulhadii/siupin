@@ -8,4 +8,6 @@ class JabatanNominatif extends Model
 {
     protected $table = 'jabatan_nominatif';
     protected $fillable = ['nama', 'bup'];
+    
+    protected $casts = ['bup' => 'integer'];
 }

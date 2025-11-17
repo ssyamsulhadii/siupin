@@ -139,14 +139,14 @@ class UsulPensiunController extends Controller
     {
         if ($pegawai->tanggal_meninggal) {
             $tmt_pensiun = $pegawai->tanggal_meninggal->copy()->addDay();
-        } else {
-            $tmt_pensiun = $pegawai->tanggal_lahir->copy()->addYears($pegawai->jabatanNominatif->bup)->addMonthNoOverflow()->startOfMonth();
+        } elseif ($pegawai->jenis_pensiun_id == 1) {
+            $tmt_pensiun = $pegawai->tanggal_lahir->copy()->addYears((int) $pegawai->jabatanNominatif->bup)->addMonthNoOverflow()->startOfMonth();
         }
         $data = [
             'data_done' => true,
-            'tanggal_usul' => date(now()),
+            'tanggal_usul' => now(),
             'status_usul' => 'Berkas Anda saat ini dalam tahap verifikasi.',
-            'tanggal_tmt_pensiun' => $tmt_pensiun,
+            'tanggal_tmt_pensiun' => $tmt_pensiun ?? null,
         ];
         $pegawai->update($data);
         return to_route('identitas-diri.form')->with('swal-success', 'Terimakasih, Data Anda berhasil diusulkan.');

@@ -1,3 +1,4 @@
 <footer class="footer text-center">
-    © SIUPIN {{ date('Y') }} | P3I-BKPSDM Pemerintah Kabupaten Kapuas
+    P3I-BKPSDM | Production Copyright ©
+            2025{{ date('Y') > 2025 ? '-' . date('Y') : '' }} Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Kabupaten Kapuas | Coded By Syamsul Hadi
 </footer>

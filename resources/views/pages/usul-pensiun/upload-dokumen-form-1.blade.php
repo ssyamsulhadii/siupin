@@ -6,7 +6,7 @@
             url="{{ $pegawai->path_surat_pengantar_pimpinan }}">
         </x-others.alert-view-dokumen>
 
-        <x-forms.input name="surat_pernyataan_pemohon" label="Surat Pernyataan Pemohon" type="file"
+        <x-forms.input name="surat_pernyataan_pemohon" label="Surat Permohonan Pensiun" type="file"
             accept=".pdf"></x-forms.input>
         <x-others.alert-view-dokumen dokumen="{{ $pegawai->surat_pernyataan_pemohon }}"
             url="{{ $pegawai->path_surat_pernyataan_pemohon }}">

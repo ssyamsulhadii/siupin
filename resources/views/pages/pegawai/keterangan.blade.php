@@ -1,16 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <x-others.page-title title="Upload Pertek" subtitle="Tambah Data"
+    <x-others.page-title title="Keterangan" subtitle="Tambah Data"
         link="{{ route('pegawai.index') }}"></x-others.page-title>
 
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-footer bg-soft-primary">
-                    <h3 class="card-title" style="font-size: 18px">Form Uplaod Pertek</h3>
+                    <h3 class="card-title" style="font-size: 18px">Form Keterangan</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('pegawai.upload_pertek', ['pegawai' => $pegawai->nip]) }}" method="POST"
+                    <form action="{{ route('pegawai.keterangan', ['pegawai' => $pegawai->nip]) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
 

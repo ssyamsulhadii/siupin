@@ -79,25 +79,27 @@ class PegawaiController extends Controller
         return response()->download($filePath)->deleteFileAfterSend(true);
     }
 
-    public function uploadPertek(Pegawai $pegawai)
+    public function keterangan(Pegawai $pegawai)
     {
-        return view('pages.pegawai.upload-pertek', compact('pegawai'));
+        return view('pages.pegawai.keterangan', compact('pegawai'));
     }
-    public function storeUploadPertek(Request $request, Pegawai $pegawai)
+    public function storeKeterangan(Request $request, Pegawai $pegawai)
     {
-        $validated = $request->validate([
-            'pertek' => 'required|file|mimes:pdf|max:500',
+         $validated = $request->validate([
+            'pertek' => 'nullable|file|mimes:pdf|max:500',
             'status_usul' => 'required|string',
         ], [
             'status_usul.required' => 'Kolom Keterangan wajib diisi.',
             'pertek.required' => 'File Pertek wajib diupload.',
         ]);
-        Storage::delete('public/pertek/' . $pegawai->pertek);
-        $nama_file = $request->pertek->hashName();
-        $request->pertek->storeAs('public/pertek', $nama_file);
-        $validated['pertek'] = $nama_file;
+        if ($request->pertek) {
+            Storage::delete('public/pertek/' . $pegawai->pertek);
+            $nama_file = $request->pertek->hashName();
+            $request->pertek->storeAs('public/pertek', $nama_file);
+            $validated['pertek'] = $nama_file;
+        }
         $pegawai->update($validated);
-        return back()->with('swal-success', 'Dokumen pertek berhasil disimpan.');
+        return to_route('pegawai.index')->with('swal-success', 'Data keterangan usul pensiun berhasil disimpan.');
     }
 
     /**
@@ -128,6 +130,6 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate(['kode_progress' => 'required|integer|between:1,6']);
         $pegawai->update(['kode_progress' => $validated['kode_progress']]);
-        return redirect()->back()->with('success', 'Progress usul berhasil diperbarui.');
+        return redirect()->back()->with('swal-success', 'Progress usul berhasil diperbarui.');
     }
 }

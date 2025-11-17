@@ -19,6 +19,8 @@ class Pegawai extends Model
         'tanggal_bercerai' => 'date',
         'tanggal_usul' => 'date',
         'tanggal_tmt_pensiun' => 'date',
+        'tanggal_meninggal' => 'date',
+        'tanggal_meninggal_pasangan' => 'date',
     ];
 
     protected array $fileColumns = [

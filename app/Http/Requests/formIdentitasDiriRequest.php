@@ -31,7 +31,7 @@ class formIdentitasDiriRequest extends FormRequest
             'nkk' => 'required|size:16',
             'nik' => 'required|size:16',
             'tanggal_lahir' => 'required|date',
-            'tanggal_meninggal' => 'sometimes',
+            'tanggal_meninggal' => 'required_if:jenis_pensiun_id,3,4|nullable|date',
             'alamat_sekarang' => 'required|string',
             'unit_organisasi' => 'required|string',
             'jabatan' => 'required|string',
@@ -48,6 +48,7 @@ class formIdentitasDiriRequest extends FormRequest
             'jenis_pensiun_id.required' => 'Kolom Jenis Pensiun wajib dipilih.',
             'jabatan_nominatif_id.required' => 'Kolom Jabatan Nominatif wajib dipilih.',
             'jenis_kelamin.required' => 'Kolom Jenis Kelamin wajib dipilih.',
+            'tanggal_meninggal.required_if' => 'Kolom tanggal meninggal wajib diisi.',
         ];
     }
 }

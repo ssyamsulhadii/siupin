@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-light">
+                <a href="/" class="logo logo-light">
                     <span class="logo-sm text-center" style="margin-left: -15px">
                         <img src="{{ asset('assets/images/logo-siupin.png') }}" alt="logo-sm-light" height="55">
                     </span>
@@ -17,9 +17,9 @@
             </button>
         </div>
 
-        @guest
-            <a href="{{ route('login') }}" class="btn btn-sm btn-success text-dark" style="margin-right: 13px">Masuk</a>
-        @endguest
+        <!--@guest-->
+        <!--    <a href="{{ route('login') }}" class="btn btn-sm btn-success text-dark" style="margin-right: 13px">Masuk</a>-->
+        <!--@endguest-->
         @auth
             <div class="d-flex">
                 <div class="dropdown d-inline-block">

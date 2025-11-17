@@ -24,8 +24,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
   Route::post('pegawai/{pegawai}/kode-progress', [PegawaiController::class, 'kodeProgress'])->name('pegawai.kode_progress');
   Route::get('pegawai/{pegawai}/detail', [PegawaiController::class, 'show'])->name('pegawai.show');
-  Route::get('pegawai/{pegawai}/upload-pertek', [PegawaiController::class, 'uploadPertek'])->name('pegawai.upload_pertek');
-  Route::post('pegawai/{pegawai}/upload-pertek', [PegawaiController::class, 'storeUploadPertek'])->name('pegawai.upload_pertek');
+  Route::get('pegawai/{pegawai}/keterangan', [PegawaiController::class, 'keterangan'])->name('pegawai.keterangan');
+  Route::post('pegawai/{pegawai}/keterangan', [PegawaiController::class, 'storeKeterangan'])->name('pegawai.keterangan');
   Route::get('pegawai/{pegawai}/is-complete', [PegawaiController::class, 'isComplete'])->name('pegawai.is_complete');
   Route::get('pegawai/export', [PegawaiController::class, 'export'])->name('pegawai.export');
   Route::delete('pegawai/{pegawai}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');

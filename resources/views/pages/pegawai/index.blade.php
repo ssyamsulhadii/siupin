@@ -60,10 +60,12 @@
                                         <td>
                                             {!! $pegawai->kode_progress_badge !!} <br>
                                             {{ $pegawai->nip }} <br>
-                                            <div class="alert alert-info p-2" role="alert">
-                                                {{ $pegawai->status_usul }}
-                                            </div>
-                                            <div class="dropdown">
+                                            @if ($pegawai->status_usul)
+                                                <div class="alert alert-info p-2" role="alert">
+                                                    {{ $pegawai->status_usul }}
+                                                </div>
+                                            @endif
+                                            {{-- <div class="dropdown">
                                                 <a href="#" class="btn btn-sm btn-warning dropdown-toggle"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Pilih Keterangan<i class="mdi mdi-chevron-down"></i>
@@ -85,10 +87,30 @@
                                                         Berkas Anda telah diusulkan
                                                     </a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </td>
                                         <td>{{ $pegawai->pangkat_golongan }} </td>
-                                        <td>{{ $pegawai->jenisPensiun->nama }}</td>
+                                        <td>
+                                            {{ $pegawai->jenisPensiun->nama }} <br>
+                                            <div class="mt-2">
+                                                <form action="{{ route('pegawai.kode_progress', ['pegawai' => $pegawai->nip]) }}" method="POST">
+                                                @csrf
+                                                <label for="progress_usul_{{ $pegawai->id }}" class="form-label">-- Pilih Progress Usul --</label>
+                                            
+                                                <select class="form-select" id="progress_usul_{{ $pegawai->id }}" name="kode_progress"
+                                                        onchange="this.form.submit()">
+                                                    <option value="">-- Pilih Progress --</option>
+                                                    <option value="1" @selected($pegawai->kode_progress == 1)>Sudah Diterima</option>
+                                                    <option value="2" @selected($pegawai->kode_progress == 2)>Sudah TTE</option>
+                                                    <option value="3" @selected($pegawai->kode_progress == 3)>Input SIASN</option>
+                                                    <option value="4" @selected($pegawai->kode_progress == 4)>Dokumen Tarik</option>
+                                                    <option value="5" @selected($pegawai->kode_progress == 5)>Dokumen Masuk</option>
+                                                    <option value="6" @selected($pegawai->kode_progress == 6)>Dokumen Batal</option>
+                                                </select>
+                                            </form>
+
+                                            </div>
+                                        </td>
                                         <td class="text-center">
                                             <a href="{{ $pegawai->whatsapp_link }}" target="_blank">
                                                 {{ $pegawai->telpon }}
@@ -113,7 +135,7 @@
                                                     check='{{ $pegawai->done_document }}'></x-others.icon-check>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <span class="me-2">Data Terpenuhi :</span>
+                                                <span class="me-2">Final Data :</span>
                                                 <div class="dropdown mt-sm-0">
                                                     <a href="#"
                                                         class="btn btn-sm {{ $pegawai->data_done ? 'btn-success' : 'btn-danger' }} dropdown-toggle"
@@ -129,30 +151,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-2">
-                                                <form id="progressForm"
-                                                    action="{{ route('pegawai.kode_progress', ['pegawai' => $pegawai->nip]) }}"
-                                                    method="POST"> @csrf
-                                                    <label for="progress_usul" class="form-label">-- Pilih Progress
-                                                        Usul --</label>
-                                                    <select class="form-select" id="progress_usul" name="kode_progress"
-                                                        onchange="document.getElementById('progressForm').submit();">
-                                                        <option value="1" @selected($pegawai->kode_progress == 1)>Sudah Diterima
-                                                        </option>
-                                                        <option value="2" @selected($pegawai->kode_progress == 2)>Sudah TTE
-                                                        </option>
-                                                        <option value="3" @selected($pegawai->kode_progress == 3)>Input SIASN
-                                                        </option>
-                                                        <option value="4" @selected($pegawai->kode_progress == 4)>Dokumen Tarik
-                                                        </option>
-                                                        <option value="5" @selected($pegawai->kode_progress == 5)>Dokumen Masuk
-                                                        </option>
-                                                        <option value="6" @selected($pegawai->kode_progress == 6)>Dokumen Batal
-                                                        </option>
-                                                    </select>
-                                                </form>
-
-                                            </div>
                                         </td>
                                         <td>
                                             <x-.forms.btn-group-action
@@ -160,8 +158,8 @@
                                                 urldelete="{{ route('pegawai.destroy', ['pegawai' => $pegawai->nip]) }}"
                                                 text="Lihat">
                                             </x-.forms.btn-group-action>
-                                            <a href="{{ route('pegawai.upload_pertek', ['pegawai' => $pegawai->nip]) }}"
-                                                class="btn btn-sm btn-secondary mt-2">Upload Pertek</a>
+                                            <a href="{{ route('pegawai.keterangan', ['pegawai' => $pegawai->nip]) }}"
+                                                class="btn btn-sm btn-secondary mt-2">Keterangan</a>
                                         </td>
                                     </tr>
                                 @endforeach

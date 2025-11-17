@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
+        
         Paginator::useBootstrapFive();
         $list_pegawai = Pegawai::where('data_done', true)
             ->where('tanggal_usul', '>=', Carbon::now()->subMonth())

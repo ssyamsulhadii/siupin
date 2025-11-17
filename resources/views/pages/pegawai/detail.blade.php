@@ -60,12 +60,16 @@
                                     <x-others.label-field label="Tanggal Lahir"
                                         value="{{ $pegawai->tanggal_lahir->isoFormat('DD-MMMM-YYYY') }}">
                                     </x-others.label-field>
-                                    <x-others.label-field label="Tanggal Usul"
-                                        value="{{ $pegawai->tanggal_usul->isoFormat('DD-MMMM-YYYY') }}">
-                                    </x-others.label-field>
-                                    <x-others.label-field label="Tanggal TMT Pensiun"
-                                        value="{{ $pegawai->tanggal_tmt_pensiun->isoFormat('DD-MMMM-YYYY') }}">
-                                    </x-others.label-field>
+
+                                    @if ($pegawai->tanggal_usul)
+                                        <x-others.label-field label="Tanggal Usul"
+                                            value="{{ $pegawai->tanggal_usul->isoFormat('DD-MMMM-YYYY') }}">
+                                        </x-others.label-field>
+                                        <x-others.label-field label="Tanggal TMT Pensiun"
+                                            value="{{ $pegawai->tanggal_tmt_pensiun->isoFormat('DD-MMMM-YYYY') }}">
+                                        </x-others.label-field>
+                                    @endif                                    
+
                                     <x-others.label-field label="Nomor Telpon" value="{{ $pegawai->telpon }}">
                                     </x-others.label-field>
                                     <x-others.label-field label="Alamat Sekarang" value="{{ $pegawai->alamat_sekarang }}">
