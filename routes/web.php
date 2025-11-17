@@ -15,6 +15,7 @@ Route::get('beranda', [userAppController::class, 'index'])->name('beranda.index'
 Route::get('inbox-usul', [userAppController::class, 'viewInboxUsul'])->name('inbox-usul.view');
 Route::get('profil-aplikasi', [userAppController::class, 'profilAplikasi'])->name('profil-aplikasi');
 Route::get('buku-petunjuk', [userAppController::class, 'bukuPetunjuk'])->name('buku-petunjuk');
+Route::get('dasar-pengusulan', [userAppController::class, 'dasarPengusulan'])->name('dasar-pengusulan');
 
 Route::middleware(['auth'])->group(function () {
   // Dashboard Admin

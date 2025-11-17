@@ -29,4 +29,8 @@ class userAppController extends Controller
     {
         return view('pages.user-app.buku-petunjuk');
     }
+    public function dasarPengusulan()
+    {
+        return view('pages.user-app.dasar-pengusulan');
+    }
 }

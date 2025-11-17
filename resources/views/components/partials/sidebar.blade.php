@@ -75,6 +75,12 @@
                         <span>Buku Petunjuk</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('dasar-pengusulan') }}" class="waves-effect">
+                        <i class="ri-file-paper-2-line"></i>
+                        <span>Dasar Pengusulan</span>
+                    </a>
+                </li>
                 @auth
                     <li>
                         <a href="{{ route('penerima-berkas.index') }}"
