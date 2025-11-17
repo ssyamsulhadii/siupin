@@ -44,24 +44,6 @@ Route::controller(AccountController::class)->group(function () {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // #Identitas Diri
 Route::get('usul-pensiun/identitas-diri/{pegawai?}', [UsulPensiunController::class, 'formIdentitasDiri'])->name('identitas-diri.form');
 Route::post('usul-pensiun/identitas-diri', [UsulPensiunController::class, 'storeIdentitasDiri'])->name('identitas-diri.store');
